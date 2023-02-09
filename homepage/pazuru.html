@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パズル</title>
+</head>
+<style>
+    .puzzle{
+        width: 70px;
+        height: 70px;
+        border: 5px solid black; 
+        border-radius:90px;
+        text-align:center;
+        font-size:20px;	
+    }
+    body{
+            background-color: burlywood;
+        }   
+</style>
+
+    <script>
+		
+
+		let puzzles=[];
+		var count=0;
+		var flag = false;
+
+		function pazle(){
+			document.getElementById("table");
+			for(var i=0;i<3;i++){
+				var tr = document.createElement("tr");
+				for (var j = 0;j < 3;j++){
+					var td =document.createElement("td");
+					var idx = i*3+j;
+					td.className="puzzle";
+					td.idx = idx;
+					td.value = idx;
+					td.textContent = idx == 0 ? "" : idx;
+					td.onclick = click;
+					tr.appendChild(td);
+					puzzles.push(td);
+				}
+				table.appendChild(tr);
+			}
+
+			for(var i=0;i<100;i++){
+				click({srcElement:{idx: Math.floor(Math.random()*9)}})
+			}
+			flag = true;
+			
+		}
+
+		function click(e){
+			var i =e.srcElement.idx;
+
+			if(i - 3 >=0&& puzzles[i-3].value==0){
+			    idou(i,i-3);
+			}else if(i+3<9&& puzzles[i+3].value==0){
+				idou(i,i+3);
+			}else if(i%3!=0&& puzzles[i-1].value==0){
+				idou(i,i-1);
+			}else if(i%3!=2&& puzzles[i+1].value==0){
+				idou(i,i+1);
+			}
+		}
+
+		function idou(i,j){
+			var tmp =puzzles[i].value;
+			puzzles[i].textContent = puzzles[j].textContent;
+			puzzles[i].value = puzzles[j].value;
+			puzzles[j].textContent = tmp;
+			puzzles[j].value = tmp;
+			if(flag == true){
+		    count++;
+			}
+		}
+        //if(puzzles[0] == 1 && puzzles[1] == 2 && puzzles[2] == 3 && puzzles[3]== 4 && puzzles[4] == 5 && puzzles[5] == 6 && puzzles[6] == 7 && puzzles[7] == 8){
+            //<a>おわり</a>
+        //}
+	</script>
+    <script>
+        //if(idx[0] == 1 && puzzles[1] == 2 && puzzles[2] == 3 && puzzles[3]== 4 && puzzles[4] == 5 && puzzles[5] == 6 && puzzles[6] == 7 && puzzles[7] == 8){
+            //<a>終わり</a>
+        //}
+    </script>
+<body onload="pazle()">
+    <img src="ダウンロード.png" width="200" height="200"><br>
+<table id="table"></table>
+<a id = purofi-ru href="kuria.html">
+    クリアしたらこちら→
+</a>
+
+
