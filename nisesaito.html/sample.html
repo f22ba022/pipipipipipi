@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偽サイト</title>
+    
+    </script>
+    <script>
+        function pushButton(aValue) {
+            let mail = document.getElementById("Email").value;
+            let pass = document.getElementById("pw").value;
+            if (mail == "1234@gmail.com" && pass == 1234) {
+                location.href = "fakesaito.html"
+            } else {
+                alert("Email-adress,passwardのどちらかに誤りがあります。もう一度入力してください。")
+            }
+        }
+        
+    </script>
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center" class="tytle">ログインページ</h1>
+    <from>
+        <div class="form1" align="center">
+            <label>Email-adress</label>
+            <br>
+            <input type="text" class="control" id="Email">
+        </div>
+        <div class="form1" align="center">
+            <label>passward</label>
+            <br>
+            <input type="password" class="control" id="pw">
+        </div>
+        <p align="center">
+        <input type="button" value="ログイン"  class="bt" onclick="pushButton(this.value)" >
+        </p>
+    </from>
+
+</body>
+
+</html>
